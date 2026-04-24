@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 📄 Document Setup
+       Basic metadata and page configuration
+  -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Page title shown in browser tab -->
+  <title>Mergedom: America</title>
+
+  <!-- 🎨 Stylesheet
+       External CSS for layout and design
+  -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- 🏷️ Game Title
+       Main heading displayed to the player
+  -->
+  <h1>Mergedom: America</h1>
+
+  <!-- 🔽 Element Selection UI
+       Dropdowns for choosing elements to combine
+  -->
+  <label for="element1">First element:</label>
+  <select id="element1">
+    <option>Loading...</option>
+  </select>
+
+  <label for="element2">Second element:</label>
+  <select id="element2">
+    <option>Loading...</option>
+  </select>
+
+  <!-- 🧪 Combine Action
+       Button triggers combination logic in JS
+  -->
+  <button id="combineBtn">Combine</button>
+
+  <!-- Displays result or feedback message -->
+  <p id="result"></p>
+
+  <!-- 📜 Unlocked Elements List
+       Shows all elements the player has discovered
+  -->
+  <h3>Unlocked Elements:</h3>
+  <ul id="unlockedList"></ul>
+
+  <!-- ⚙️ Script (Game Logic)
+       Loads main JavaScript module handling gameplay
+  -->
+  <script type="module" src="main.js"></script>
+</body>
+</html>
