@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link href="https://fonts.cdnfonts.com/css/gagalin" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Mergedom: America</title>
 <style>
-
 /* Main page setup */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #0f1220;
+  background: #FFFFFF;
   color: white;
 }
 
@@ -17,11 +17,13 @@ body {
 #topBanner {
   width: 100%;
   text-align: center;
-  padding: 18px 0;
-  font-size: 26px;
+  padding: 10px 0;
+  font-size: 50px;
+  letter-spacing: 2px;
   font-weight: bold;
-  background: #141a2d;
-  border-bottom: 1px solid #2a3358;
+  font-family: gagalin;
+  color: #923716;
+  background: #FFFFFF;
 }
 
 /* Main layout */
@@ -31,132 +33,165 @@ body {
   align-items: flex-start;
   gap: 20px;
   padding: 70px 20px 40px 160px;
+  height: 500px;
 }
 
 /* Workspace */
 #workspace {
-  flex-grow: 1;   
+  height: 550px;
+  width: 1100px;
   position: relative;
-  transform: translateY(-25px);
+  transform: translateY(-40px);
   height: 78vh;
   border: 2px dashed #444;
   border-radius: 12px;
-  background: #151a2e;
-  display: flex;
+  background: #f9f8f2;
   align-items: center;
   justify-content: center;
-  min-width: 500px; 
+  min-width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center
+
 }
 #workspace::after {
   content: "Drag elements here";
   color: #666;
   font-size: 18px;
 }
+#workspace.has-tile::after {
+  display: none;
+}
 
 /* Side panel */
 #sidePanel {
+  height: 550px;
+  max-height: 550px;
   width: 180px;
-  height: 78vh;
-  transform: translateY(-25px);
-  background: #1a1f35;
+  min-width: 180px;
+  max-width: 180px;
+  transform: translateY(-40px);
+  background: #923716;
   border-radius: 12px;
   margin-left: 20px;
   overflow-y: auto;
-  padding: 0 6px 6px 6px; 
-  display: flex;
-  flex-direction: column;
+  padding: 0 6px 6px 6px;
+  flex-shrink: 0;
 }
 #sidePanel h3 {
   position: sticky;
   top: 0;
-  z-index: 20; 
-  background: #1a1f35; 
+  z-index: 20;
+  background: #923716;
   text-align: center;
   margin: 0;
-  padding: 12px 0;
+  padding: 15px 0;
   font-size: 18px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
   margin-bottom: 10px;
+}
+
+/* Adjust a-z section letters */
+.sidebar-letter {
+  margin-top: 10px;
+  padding: 4px 6px;
+  font-weight: bold;
+  font-family: 'Geneva';
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  padding-left: 2dvh;
 }
 
 /* Draggable elements */
 .element {
-  background: #4a6cf7;
+  background: #f9f8f2;
   border-radius: 12px;
   height: 90px;
-  display: flex;
+  width: 180px;
   align-items: center;
   justify-content: center;
   margin-bottom: 12px;
+  display: flex;
+  color: #000000;
   cursor: grab;
   font-weight: bold;
+  font-family: 'Geneva';
   user-select: none;
-  box-shadow: 0 5px 0 #2c3ea8;
+  box-shadow: 0 5px 0 #e8e5d5;
 }
 .element:hover {
-  background: #5b7dff;
+  background: #f9f8f2;
   transform: translateY(-2px);
-  box-shadow: 0 8px 0 #2c3ea8;
+  box-shadow: 0 8px 0 #e8e5d5;
 }
 .element:active {
   transform: translateY(2px);
-  box-shadow: 0 3px 0 #2c3ea8;
+  box-shadow: 0 3px 0 #e8e5d5;
 }
 
 /* Placed tiles */
 .tile {
   position: absolute;
   padding: 10px 14px;
-  background: #4a6cf7;
+  background: #923716;
   border-radius: 10px;
   cursor: grab;
+  font-family: 'Geneva';
   user-select: none;
   font-weight: bold;
+  flex: 0 0 auto;
+  width: max-content;
 }
 .tile:active {
   cursor: grabbing;
 }
 
-/* Result text */
-#result {
+/* Progress badge */
+#progress {
   position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #aaa;
+  top: 12px;
+  right: 14px;
+  background: rgba(255,255,255,0.04);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 20px;
+  color: #000000;
+  pointer-events: none;
+  font-family: 'Geneva';
 }
 
 /* Menu tiles */
 .menuTile {
   width: 100%;
   height: 70px;
-  background: #2d3b66;
+  background: #923716;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 15px;
   font-weight: bold;
+  font-family: 'Geneva';
   cursor: pointer;
   user-select: none;
-  box-shadow: 0 6px 0 #1c274a;
+  box-shadow: 0 6px 0 #65260f;
   border: 2px solid rgba(255,255,255,0.08);
   transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s ease;
 }
 .menuTile:hover {
-  background: #3f56a0;
+  background: #923716;
   transform: translateY(-2px);
-  box-shadow: 0 8px 0 #1c274a;
+  box-shadow: 0 8px 0 #65260f;
 }
 .menuTile:active {
   transform: translateY(2px);
-  box-shadow: 0 3px 0 #1c274a;
+  box-shadow: 0 3px 0 #65260f;
 }
 
 /* Erase button */
 #eraseTile {
   background: #d9534f;
   box-shadow: 0 6px 0 #8f2f2c;
+  font-family: 'Geneva';
 }
 #eraseTile:hover {
   background: #ff6b6b;
@@ -173,6 +208,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  font-family: 'Geneva';
 }
 
 /* Modal */
@@ -186,37 +222,40 @@ body {
   background: rgba(0,0,0,0.7);
   align-items: center;
   justify-content: center;
+  font-family: 'Geneva';
 }
 .modalContent {
   width: 500px;
   height: 360px;
-  background: #1a1f35;
+  background: #923716;
   border-radius: 14px;
   padding: 24px;
-  box-shadow: 0 10px 0 #0d1020;
+  box-shadow: 0 10px 0 #65260f;
   border: 2px solid rgba(255,255,255,0.08);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 20px;
+  font-family: 'Geneva';
 }
 
 /* Settings */
 .settingsPanel {
   width: 550px;
   height: 420px;
-  background: #1a1f35;
+  background: #923716;
   border-radius: 14px;
   padding: 30px;
-  box-shadow: 0 10px 0 #0d1020;
+  box-shadow: 0 10px 0 #65260f;
   border: 2px solid rgba(255,255,255,0.08);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 22px;
-  font-size: 20px; /* 🔥 bigger base font */
+  font-size: 20px;
   text-align: center;
+  font-family: 'Geneva';
 }
 .settingItem {
   width: 100%;
@@ -225,6 +264,7 @@ body {
   align-items: center;
   gap: 10px;
   font-size: 18px;
+  font-family: 'Geneva';
 }
 .settingsButton {
   padding: 14px 18px;
@@ -232,14 +272,14 @@ body {
   border-radius: 10px;
   border: none;
   cursor: pointer;
-  background: #2d3b66;
+  background: #ae674d;
+  font-family: 'Geneva';
   color: white;
   font-weight: bold;
-  width: 90%; /* 🔥 makes it feel like a full control bar */
+  width: 90%;
   transition: transform 0.1s ease, background 0.2s ease;
 }
 .settingsButton:hover {
-  background: #3f56a0;
   transform: scale(1.02);
 }
 .settingsButton.danger {
@@ -252,20 +292,22 @@ body {
 /* Volume */
 #volumeSlider {
   width: 90%;
-  height: 6px;
+  height: 36px;
 }
 
 /* Account */
 .accountPanel {
   width: 500px;
   height: 380px;
-  background: #1a1f35;
+  background: #923716;
   border-radius: 14px;
   padding: 30px;
   display: flex;
+  box-shadow: 0 10px 0 #65260f;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: 'Geneva';
   gap: 18px;
   color: white;
   text-align: center;
@@ -286,29 +328,29 @@ body {
   gap: 10px;
 }
 .accountButtons button {
+  font-family: 'Geneva';
   padding: 10px 14px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  background: #2d3b66;
+  background: #ae674d;
   color: white;
   font-weight: bold;
 }
 .accountButtons button:hover {
-  background: #3f56a0;
+  background: #ae674d;
 }
 
 /* Encyclopedia */
 .encyclopediaPanel {
   width: 500px;
   height: 420px;
-  background: #1a1f35;
+  background: #923716;
   border-radius: 14px;
   padding: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
   overflow: hidden;
 }
 #encyclopediaList {
@@ -321,16 +363,37 @@ body {
   padding-right: 5px;
 }
 .encyclopediaItem {
-  background: #2d3b66;
+  background: #ae674d;
   padding: 12px;
   border-radius: 10px;
   cursor: pointer;
   transition: 0.2s;
 }
-.encyclopediaItem:hover {
-  background: #3f56a0;
-}
 
+/* Merge animation */
+.merge-effect {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  pointer-events: none;
+  border: 3px solid gold;
+  animation: mergeBurst 500ms ease-out forwards;
+}
+@keyframes mergeBurst {
+  0% {
+    transform: scale(0.2);
+    opacity: 1;
+  }
+  80% {
+    transform: scale(4);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(5);
+    opacity: 0;
+  }
+}
 </style>
 </head>
 <body>
@@ -345,16 +408,31 @@ body {
   <div class="menuTile" onclick="openModal('accountModal')">Account</div>
   <div class="menuTile" onclick="openModal('encyclopediaModal')">Encyclopedia</div>
   <div style="flex: 1;"></div>
-  <div class="menuTile" onclick="openModal('settingsModal')">Settings</div>
+  <div id="mainHintButton" class="menuTile">Hint</div>
   <div id="eraseTile" class="menuTile" onclick="clearWorkspace()">Erase</div>
+  <div class="menuTile" onclick="openModal('settingsModal')">Settings</div>
+</div>
 
 <!-- Main layout -->
-</div>
 <div id="mainContainer">
-  <div id="workspace"></div>
+  <div id="workspace">
+    <div id="result"></div>
+    <div id="progress" aria-live="polite"></div>
+  </div>
   <div id="sidePanel">
     <h3>Elements</h3>
     <div id="elementsContainer"></div>
+  </div>
+</div>
+
+<!-- Background music -->
+<audio id="bgMusic" src="lunar_new_year_2021.mp3" loop preload="auto"></audio>
+
+<!-- floating hint panel -->
+<div id="mainHintPanel" style="position:fixed; left:20px; bottom:20px; width:240px; padding:10px; display:none; background:#923716; border-radius:10px; color:#ffffff; z-index:9999; box-shadow:0 6px 0 rgba(0,0,0,0.6);">
+  <div id="mainHintText" style="font-size:15px;"></div>
+  <div style="text-align:right; margin-top:8px;">
+    <button id="mainHintClose" style="padding:6px 8px;border-radius:6px;border:none;color:white;cursor:pointer;">Close</button>
   </div>
 </div>
 
@@ -389,9 +467,10 @@ body {
 
 <!-- Encyclopedia modal -->
 <div id="encyclopediaModal" class="modal" onclick="closeModal(event,'encyclopediaModal')">
-  <div class="modalContent" style="flex-direction: column; align-items: stretch;">
+  <div class="modalContent encyclopediaPanel" style="flex-direction: column; align-items: stretch;">
     <h2>📖 Encyclopedia</h2>
-    <div id="encyclopediaList" style="overflow-y:auto; height: 100%; width: 100%;"></div>
+    <input id="encyclopediaSearch" type="search" placeholder="Search elements..." style="padding:16px;border-radius:8px;border:none;margin:8px 0 12px 0;font-size: 18px;transform: translateY(-20px);" />
+    <div id="encyclopediaList" style="overflow-y:auto; height: 100%; width: 100%;"></div>  </div>
   </div>
 </div>
 
@@ -399,13 +478,9 @@ body {
 <div id="accountModal" class="modal" onclick="closeModal(event,'accountModal')">
   <div class="modalContent accountPanel">
     <h2>Account</h2>
-    <!-- Status -->
     <div id="accountStatus">Not logged in</div>
-    <!-- Inputs -->
     <input type="text" id="usernameInput" placeholder="Enter username">
     <input type="password" id="passwordInput" placeholder="Enter password">
-
-    <!-- Actions -->
     <div class="accountButtons">
       <button onclick="signup()">Sign Up</button>
       <button onclick="login()">Log In</button>
@@ -414,40 +489,15 @@ body {
   </div>
 </div>
 
-<script>
-let combineLock = false;
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 
-/* Modal open */
-function openModal(id){
-  document.getElementById(id).style.display = "flex";
-  if (id === "encyclopediaModal") {
-    loadEncyclopedia();
-  }
-}
+/* Supabase setup */
+const supabaseUrl = "https://ddbiqoyucdjxwauwytla.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRkYmlxb3l1Y2RqeHdhdXd5dGxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5MDA2MTMsImV4cCI6MjA5MjQ3NjYxM30.wCRnticq4Bgce6AyAvKbwgugILZsUFWlGjUxph382pI";
+const supabase = createClient(supabaseUrl, supabaseKey);
 
-/* Modal close */
-function closeModal(e,id){
-  if(e.target.classList.contains("modal")){
-    document.getElementById(id).style.display="none";
-  }
-}
-
-/* Clear workspace */
-function clearWorkspace() {
-  if (!confirm("Erase all placed elements?"))
-    return;
-  const workspace = document.getElementById("workspace");
-  workspace.innerHTML = "";
-  workspace.querySelectorAll(".element").forEach(el => el.remove());
-  console.log("Workspace cleared");
-}
-
-/* Theme toggle */
-function toggleTheme() {
-  document.body.classList.toggle("light-mode");
-}
-
-/* Light mode styles */
+/* Dark mode styles */
 const lightStyle = document.createElement("style");
 lightStyle.innerHTML = `
 body.light-mode {
@@ -468,375 +518,713 @@ body.light-mode .menuTile {
 `;
 document.head.appendChild(lightStyle);
 
-/* Reset progress */
-function resetProgress() {
-  if (confirm("Reset all progress? This cannot be undone.")) {
-    localStorage.clear();
-    location.reload();
+window.addEventListener("DOMContentLoaded", async () => {
+  // DOM refs
+  const sidebar = document.getElementById("elementsContainer");
+  const workspace = document.getElementById("workspace");
+  const resultDiv = document.getElementById("result");
+  const progressDiv = document.getElementById("progress");
+
+  // Update discovery progress
+  function updateProgress() {
+    const TOTAL = 75;
+    const found = unlockedElements ? unlockedElements.size : 0;
+    if (progressDiv) progressDiv.textContent = `${found}/${TOTAL} discovered`;
   }
-}
 
-</script>
-<script type="module">
+  // background music
+  const bgMusic = document.getElementById("bgMusic");
+  const savedVol = parseFloat(localStorage.getItem("mergedom_volume") || "0.5");
+  if (bgMusic) {
+    bgMusic.volume = savedVol;
+    bgMusic.loop = true;
+    bgMusic.preload = "auto";
+  }
 
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+  // Wire volume slider to bg music
+  const volSlider = document.getElementById("volumeSlider");
+  if (volSlider) {
+    volSlider.value = Math.round(savedVol * 100);
+    volSlider.addEventListener("input", (e) => {
+      const v = Number(e.target.value) / 100;
+      localStorage.setItem("mergedom_volume", String(v));
+      if (bgMusic) bgMusic.volume = v;
+    });
+  }
 
-/* Supabase setup */
-const supabaseUrl = "https://ddbiqoyucdjxwauwytla.supabase.co";
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRkYmlxb3l1Y2RqeHdhdXd5dGxhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5MDA2MTMsImV4cCI6MjA5MjQ3NjYxM30.wCRnticq4Bgce6AyAvKbwgugILZsUFWlGjUxph382pI";
-const supabase = createClient(supabaseUrl, supabaseKey);
+  // Start background music
+  async function tryStartBgMusic() {
+    if (!bgMusic) return;
+    try {
+      await bgMusic.play();
+      console.log("bgMusic autoplay started");
+    } catch (err) {
+      console.warn("bgMusic autoplay failed:", err);
+    }
+  }
 
-/* Signup */
-window.signup = async function () {
-  const email = document.getElementById("usernameInput").value;
-  const password = document.getElementById("passwordInput").value;
-  const { error } = await supabase.auth.signUp({
-    email,
-    password
+  // Stop/pause background music
+  function stopBgMusic() {
+    if (!bgMusic) return;
+    try {
+      bgMusic.pause();
+      bgMusic.currentTime = 0;
+    } catch (e) { /* ignore */ }
+  }
+  tryStartBgMusic();
+
+  // Ensure music is stopped on certain actions
+  window.addEventListener('pagehide', stopBgMusic);
+  window.addEventListener('beforeunload', stopBgMusic);
+  window.addEventListener('unload', stopBgMusic);
+
+  // State
+  let activeTile = null;
+  let isDragging = false;
+  let offsetX = 0;
+  let offsetY = 0;
+  let elements = [];
+  let elementMap = {};
+  let recipes = {};
+  let unlockedElements = new Set();
+  let encyclopediaCache = [];
+
+  /* Modal open */
+  window.openModal = function (id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.style.display = "flex";
+    if (id === "encyclopediaModal") loadEncyclopedia();
+  };
+
+  /* Modal close */
+  window.closeModal = function (e, id) {
+    if (e.target.classList.contains("modal")) {
+      const el = document.getElementById(id);
+      if (el) el.style.display = "none";
+    }
+  };
+
+  /* Theme toggle */
+  window.toggleTheme = function () {
+    document.body.classList.toggle("light-mode");
+  };
+
+  /* Clear workspace */
+  window.clearWorkspace = function () {
+    if (!confirm("Erase all placed elements?")) return;
+    workspace.querySelectorAll(".tile").forEach(t => t.remove());
+    updateWorkspaceHint();
+    saveWorkspace();
+    console.log("Workspace cleared");
+  };
+
+  /* Reset progress */
+  window.resetProgress = async function () {
+    if (!confirm("Reset all progress? This cannot be undone.")) return;
+    workspace.querySelectorAll(".tile").forEach(t => t.remove());
+    updateWorkspaceHint();
+    const firstTen = elements && elements.length ? elements.slice(0, 10).map(e => String(e.id)) : [];
+    unlockedElements = new Set(firstTen);
+    encyclopediaCache = [];
+    sessionStorage.removeItem("mergedom_workspace");
+    sessionStorage.removeItem("mergedom_unlocked");
+    sessionStorage.removeItem("mergedom_encyclopedia");
+    localStorage.removeItem("mergedom_volume");
+
+    // persist server for logged-in users, session for anonymous
+    if (currentUserId) {
+      const { error } = await supabase
+        .from("user_state")
+        .upsert({
+          user_id: currentUserId,
+          workspace: [],
+          unlocked_elements: firstTen,
+          encyclopedia: []
+        }, { returning: "minimal" });
+      if (error) console.error("Failed to reset server state:", error);
+    } else {
+      sessionStorage.setItem("mergedom_workspace", JSON.stringify([]));
+      sessionStorage.setItem("mergedom_unlocked", JSON.stringify(firstTen));
+      sessionStorage.setItem("mergedom_encyclopedia", JSON.stringify([]));
+    }
+    renderSidebar();
+    const list = document.getElementById("encyclopediaList");
+    if (list) list.innerHTML = "";
+    updateProgress();
+    saveWorkspace();
+  };
+
+  /* Signup */
+  window.signup = async function () {
+    const email = document.getElementById("usernameInput").value;
+    const password = document.getElementById("passwordInput").value;
+    const { error } = await supabase.auth.signUp({ email, password });
+    if (error) {
+      console.log("FULL ERROR:", error);
+      alert(JSON.stringify(error, null, 2));
+    }
+  };
+
+  /* Login */
+  window.login = async function () {
+    const email = document.getElementById("usernameInput").value;
+    const password = document.getElementById("passwordInput").value;
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) {
+      alert(error.message);
+      return;
+    }
+    document.getElementById("accountStatus").innerText = "Logged in as: " + data.user.email;
+  };
+
+  /* Logout */
+  window.logout = async function () {
+    await supabase.auth.signOut();
+    currentUserId = null;
+
+    // clear session-only saved state so it behaves like a fresh tab
+    sessionStorage.removeItem("mergedom_workspace");
+    sessionStorage.removeItem("mergedom_unlocked");
+    sessionStorage.removeItem("mergedom_encyclopedia");
+
+    // clear and reset GUI
+    workspace.querySelectorAll(".tile").forEach(t => t.remove());
+    unlockedElements = new Set(elements.slice(0, 10).map(e => String(e.id)));
+    encyclopediaCache = [];
+    const userInput = document.getElementById("usernameInput");
+    const passInput = document.getElementById("passwordInput");
+    if (userInput) userInput.value = "";
+    if (passInput) passInput.value = "";
+    renderSidebar();
+    document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+    document.getElementById("accountStatus").innerText = "Not logged in";
+     updateProgress();
+  };
+
+  /* Auth listener */
+  supabase.auth.onAuthStateChange((event, session) => {
+    console.log("AUTH EVENT:", event, session);
+    if (session?.user) {
+      document.getElementById("accountStatus").innerText = "Logged in as: " + session.user.email;
+    } else {
+      document.getElementById("accountStatus").innerText = "Not logged in";
+    }
   });
-if (error) {
-  console.log("FULL ERROR:", error);
-  alert(JSON.stringify(error, null, 2));
-}
-};
 
-/* Login */
-window.login = async function () {
-  const email = document.getElementById("usernameInput").value;
-  const password = document.getElementById("passwordInput").value;
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password
-  });
-  if (error) {
-    alert(error.message);
-    return;
+  /* Load encyclopedia */
+  window.loadEncyclopedia = async function (query = "") {
+    const list = document.getElementById("encyclopediaList");
+    if (!list) return;
+    list.innerHTML = "Loading...";
+    let data, error;
+    if (query && query.length > 0) {
+      // search by name
+      ({ data, error } = await supabase
+        .from("elements")
+        .select("element_name, category, description")
+        .ilike("element_name", `%${query}%`)
+        .order("id", { ascending: true })
+        .limit(50));
+    } else {
+      ({ data, error } = await supabase
+        .from("elements")
+        .select("element_name, category, description")
+        .order("id", { ascending: true })
+        .limit(10));
+    }
+    if (error) {
+      console.error(error);
+      list.innerHTML = "Failed to load encyclopedia.";
+      return;
+    }
+    list.innerHTML = "";
+    if (!data || data.length === 0) {
+      // if no server results, still show discovered items that match query
+      const matches = (encyclopediaCache || []).filter(el =>
+        !query || el.element_name.toLowerCase().includes(query.toLowerCase())
+      );
+      if (matches.length === 0) {
+        list.innerHTML = "<div style='padding:10px;color:#ccc'>No results</div>";
+      } else {
+        matches.forEach(el => appendEncyclopediaItem(list, el, true));
+      }
+      return;
+    }
+    data.forEach(el => appendEncyclopediaItem(list, el));
+    // append discovered entries (avoid duplicates)
+    (encyclopediaCache || []).forEach(el => {
+      if (!data.some(d => d.element_name === el.element_name)) appendEncyclopediaItem(list, el, true);
+    });
+  };
+
+  // debounce helper
+  function debounce(fn, wait = 300) {
+    let t;
+    return (...args) => {
+      clearTimeout(t);
+      t = setTimeout(() => fn(...args), wait);
+    };
   }
-  document.getElementById("accountStatus").innerText =
-    "Logged in as: " + data.user.email;
-};
 
-/* Logout */
-window.logout = async function () {
-  await supabase.auth.signOut();
-  document.getElementById("accountStatus").innerText = "Not logged in";
-};
+  // wire search input (when modal exists)
+  (function setupEncyclopediaSearch() {
+    const input = document.getElementById("encyclopediaSearch");
+    if (!input) return;
+    const debounced = debounce(() => {
+      const q = input.value.trim();
+      loadEncyclopedia(q);
+    }, 250);
+    input.addEventListener("input", debounced);
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        loadEncyclopedia(input.value.trim());
+      }
+    });
+  })();
 
-/* Auth listener */
-supabase.auth.onAuthStateChange((event, session) => {
-  console.log("AUTH EVENT:", event, session);
-});
-
-/* Auth UI update */
-supabase.auth.onAuthStateChange((event, session) => {
-  if (session?.user) {
-    document.getElementById("accountStatus").innerText =
-      "Logged in as: " + session.user.email;
-  } else {
-    document.getElementById("accountStatus").innerText =
-      "Not logged in";
-  }
-});
-
-/* Encyclopedia cache */
-let encyclopediaCache = [];
-
-/* Load encyclopedia */
-window.loadEncyclopedia = async function () {
-  const list = document.getElementById("encyclopediaList");
-  list.innerHTML = "Loading...";
-  const { data, error } = await supabase
-    .from("elements")
-    .select("element_name, category, description")
-    .order("id", { ascending: true })
-    .limit(10);
-  if (error) {
-    console.error(error);
-    list.innerHTML = "Failed to load encyclopedia.";
-    return;
-  }
-  list.innerHTML = "";
-  data.forEach(el => {
+  /* Configure item to encyclopedia */
+  function appendEncyclopediaItem(listEl, el, discovered = false) {
     const div = document.createElement("div");
-    div.style.padding = "10px";
-    div.style.marginBottom = "10px";
-    div.style.background = "#2d3b66";
-    div.style.borderRadius = "10px";
+    div.className = "encyclopediaItem";
+    if (discovered) div.classList.add("discovered");
     div.innerHTML = `
       <strong>${el.element_name}</strong><br>
       <small>${el.category || "Unknown"}</small><br>
       <span>${el.description || "No description"}</span>
     `;
-    list.appendChild(div);
+    listEl.appendChild(div);
+  }
+
+  /* Append to encyclopedia */
+  function appendEncyclopedia(el) {
+    if (!el) return;
+    if (encyclopediaCache.some(item => item.element_name === el.element_name)) return;
+    encyclopediaCache.push(el);
+    const list = document.getElementById("encyclopediaList");
+    if (list) appendEncyclopediaItem(list, el, true);
+  }
+
+  // Creating hint logic
+  async function getCraftingHint() {
+    const { data: combos, error } = await supabase
+      .from("combinations")
+      .select("element1_id, element2_id, result_id");
+    if (error || !combos) return "No hint data available.";
+    const craftable = combos.filter(c =>
+      unlockedElements.has(String(c.element1_id)) &&
+      unlockedElements.has(String(c.element2_id)) &&
+      !unlockedElements.has(String(c.result_id))
+    );
+    if (craftable.length === 0)
+      return "No new combinations available with your current elements.";
+    const combo = craftable[Math.floor(Math.random() * craftable.length)];
+    const name1 = elementMap[String(combo.element1_id)]?.element_name || "Unknown";
+    const name2 = elementMap[String(combo.element2_id)]?.element_name || "Unknown";
+    return `Try combining ${name1} + ${name2}.`;
+  }
+
+  // Show hint in floating panel
+  function showMainHint(text) {
+    const panel = document.getElementById("mainHintPanel");
+    const txt = document.getElementById("mainHintText");
+    if (!panel || !txt) return;
+    txt.textContent = text;
+    panel.style.display = "block";
+    clearTimeout(panel._hideTimer);
+    panel._hideTimer = setTimeout(() => { panel.style.display = "none"; }, 8000);
+  }
+  const mainHintClose = document.getElementById("mainHintClose");
+  if (mainHintClose) mainHintClose.addEventListener("click", () => {
+    const panel = document.getElementById("mainHintPanel");
+    if (panel) panel.style.display = "none";
   });
-  encyclopediaCache.forEach(el => {
-    const div = document.createElement("div");
-    div.style.padding = "10px";
-    div.style.marginBottom = "10px";
-    div.style.background = "#2d3b66";
-    div.style.borderRadius = "10px";
-    div.innerHTML = `
-      <strong>${el.element_name}</strong><br>
-      <small>${el.category || "Discovered"}</small><br>
-      <span>${el.description || "Player discovered element"}</span>
-    `;
-    list.appendChild(div);
-  });
-};
-
-/* Add to encyclopedia */
-function appendEncyclopedia(el) {
-  if (!el) return;
-  // prevent duplicates by element_name
-  const exists = encyclopediaCache.some(
-    item => item.element_name === el.element_name
-  );
-  if (exists) return;
-  encyclopediaCache.push(el);
-  const list = document.getElementById("encyclopediaList");
-  if (!list) return;
-  const div = document.createElement("div");
-  div.style.padding = "10px";
-  div.style.marginBottom = "10px";
-  div.style.background = "#2d3b66";
-  div.style.borderRadius = "10px";
-  div.innerHTML = `
-    <strong>${el.element_name}</strong><br>
-    <small>${el.category || "Discovered"}</small><br>
-    <span>${el.description || "Player discovered element"}</span>
-  `;
-
-  list.appendChild(div);
-}
-
-/* Boundary check */
-function isTouchingBoundary(tile) {
-  const wr = workspace.getBoundingClientRect();
-  const tr = tile.getBoundingClientRect();
-  return (
-    tr.left <= wr.left ||
-    tr.right >= wr.right ||
-    tr.top <= wr.top ||
-    tr.bottom >= wr.bottom
-  );
-}
-
-/* DOM refs */
-const sidebar = document.getElementById("elementsContainer");
-const workspace = document.getElementById("workspace");
-const resultDiv = document.getElementById("result");
-
-/* State */
-let activeTile = null;
-let isDragging = false;
-let offsetX = 0;
-let offsetY = 0;
-let elements = [];
-let elementMap = {};
-let recipes = {};
-let unlockedElements = new Set();
-
-/* Load workspace */
-function loadWorkspace() {
-  const saved = localStorage.getItem("workspace");
-  if (!saved) return;
-  const data = JSON.parse(saved);
-  data.forEach(item => {
-    createTile(item.id, item.x, item.y);
-  });
-}
-
-/* Init */
-window.addEventListener("load", async () => {
-  await loadElements();
-  await loadRecipes();
-  loadWorkspace();
-});
-
-/* Save workspace */
-function saveWorkspace() {
-  const data = [];
-  document.querySelectorAll(".tile").forEach(tile => {
-    data.push({
-      id: tile.dataset.id,
-      x: parseFloat(tile.style.left),
-      y: parseFloat(tile.style.top)
+  
+  // Main hint button
+  const mainHintBtn = document.getElementById("mainHintButton");
+  if (mainHintBtn) {
+    mainHintBtn.addEventListener("click", async () => {
+      showMainHint("Fetching hint...");
+      const hint = await getCraftingHint();
+      showMainHint(hint);
     });
-  });
-  localStorage.setItem("workspace", JSON.stringify(data));
-}
+  }
 
-/* Load elements */
-async function loadElements() {
+  /* Boundary check */
+  function isTouchingBoundary(tile) {
+    const wr = workspace.getBoundingClientRect();
+    const tr = tile.getBoundingClientRect();
+    return (
+      tr.left <= wr.left ||
+      tr.right >= wr.right ||
+      tr.top <= wr.top ||
+      tr.bottom >= wr.bottom
+    );
+  }
+
+  /* Collision check */
+  function isColliding(a, b) {
+    const r1 = a.getBoundingClientRect();
+    const r2 = b.getBoundingClientRect();
+    return !(
+      r1.right < r2.left ||
+      r1.left > r2.right ||
+      r1.bottom < r2.top ||
+      r1.top > r2.bottom
+    );
+  }
+
+  /* Merge animation */
+  function playMergeAnimation(x, y) {
+    const effect = document.createElement("div");
+    effect.className = "merge-effect";
+    effect.style.left = x + "px";
+    effect.style.top = y + "px";
+    workspace.appendChild(effect);
+
+    setTimeout(() => {
+      effect.remove();
+    }, 500);
+  } 
+
+  /* Pulls users' info */
+  let currentUserId = null;
+  async function userStateExists(userId) {
     const { data, error } = await supabase
-    .from("elements")
-    .select("id, element_name, category, description");
-  if (error) {
-    console.error(error);
-    return;
+      .from("user_state")
+      .select("id")
+      .eq("user_id", userId)
+      .maybeSingle();
+    if (error) { console.warn("userStateExists error", error); return false; }
+    return !!data;
   }
-  elements = data;
-  unlockedElements = new Set(
-    elements.slice(0, 10).map(e => e.id)
-  );
-  elementMap = {};
-  elements.forEach(e => {
-    elementMap[e.id] = e;
-  });
-  renderSidebar();
-}
 
-/* Mouse move */
-document.addEventListener("mousemove", (e) => {
-  if (!activeTile || !isDragging) return;
-  const wr = workspace.getBoundingClientRect();
-  const x = e.clientX - wr.left - offsetX;
-  const y = e.clientY - wr.top - offsetY;
-  activeTile.style.left = `${x}px`;
-  activeTile.style.top = `${y}px`;
-});
-
-/* Mouse up */
-document.addEventListener("mouseup", () => {
-  if (!activeTile) return;
-  isDragging = false;
-  const tiles = document.querySelectorAll(".tile");
-  tiles.forEach(other => {
-    if (other === activeTile) return;
-    if (isColliding(activeTile, other)) {
-      combine(activeTile.dataset.id, other.dataset.id, other);
+  /* Load user progress */
+  async function loadUserState(userId) {
+    const { data, error } = await supabase
+      .from("user_state")
+      .select("workspace, unlocked_elements, encyclopedia")
+      .eq("user_id", userId)
+      .maybeSingle();
+    if (error) { console.error("loadUserState", error); return; }
+    if (!data) return;
+    workspace.querySelectorAll(".tile").forEach(t => t.remove());
+    (data.workspace || []).forEach(item => createTile(String(item.id), item.x, item.y));
+    unlockedElements = new Set((data.unlocked_elements || []).map(String));
+    encyclopediaCache = data.encyclopedia || [];
+    renderSidebar();
+    const list = document.getElementById("encyclopediaList");
+    if (list) {
+      list.innerHTML = "";
+      encyclopediaCache.forEach(el => appendEncyclopediaItem(list, el, true));
     }
-  });
-  if (isTouchingBoundary(activeTile)) {
-    activeTile.remove();
-    }
-  activeTile.style.cursor = "grab";
-  activeTile = null;
-  saveWorkspace();
-});
-
-/* Mouse down */
-document.addEventListener("mousedown", (e) => {
-  if (e.button !== 0) return;
-  const tile = e.target.closest(".tile");
-  if (!tile) return;
-  activeTile = tile;
-  isDragging = true;
-  const wr = workspace.getBoundingClientRect();
-  const rect = tile.getBoundingClientRect();
-  // convert everything into workspace coordinates
-  offsetX = e.clientX - rect.left;
-  offsetY = e.clientY - rect.top;
-  tile.style.cursor = "grabbing";
-});
-
-/* Collision check */
-function isColliding(a, b) {
-  const r1 = a.getBoundingClientRect();
-  const r2 = b.getBoundingClientRect();
-  return !(
-    r1.right < r2.left ||
-    r1.left > r2.right ||
-    r1.bottom < r2.top ||
-    r1.top > r2.bottom
-  );
-}
-
-/* Load recipes (combinations) */
-async function loadRecipes() {
-  const { data, error } = await supabase
-    .from("combinations")
-    .select("element1_id, element2_id, result_id");
-  if (error) {
-    console.error(error);
-    return;
+     updateProgress();
   }
-  recipes = {};
-  data.forEach(r => {
-    recipes[`${r.element1_id}+${r.element2_id}`] = r.result_id;
-    recipes[`${r.element2_id}+${r.element1_id}`] = r.result_id;
-  });
-}
 
-/* Render sidebar */
-function renderSidebar() {
-  sidebar.innerHTML = "";
-  elements
-    .filter(el => unlockedElements.has(el.id))
-    .forEach(el => {
-      const div = document.createElement("div");
-      div.className = "element";
-      div.textContent = el.element_name;
-    div.addEventListener("mousedown", (e) => {
-        const wr = workspace.getBoundingClientRect();
-        const x = e.clientX - wr.left;
-        const y = e.clientY - wr.top;
-        const tile = createTile(el.id, x, y);
-        activeTile = tile;
-        isDragging = true;
-        const rect = tile.getBoundingClientRect();
-        offsetX = e.clientX - rect.left;
-        offsetY = e.clientY - rect.top;
-        tile.style.cursor = "grabbing";
-        });
-      sidebar.appendChild(div);
+  /* Save user progress to user ID */
+  async function saveUserState() {
+    if (!currentUserId) return;
+    const tiles = [...workspace.querySelectorAll(".tile")].map(tile => ({
+      id: tile.dataset.id,
+      x: parseFloat(tile.style.left) || 0,
+      y: parseFloat(tile.style.top) || 0
+    }));
+    const unlocked = Array.from(unlockedElements);
+    const encyclopedia = encyclopediaCache;
+    const { error } = await supabase
+      .from("user_state")
+      .upsert({
+        user_id: currentUserId,
+        workspace: tiles,
+        unlocked_elements: unlocked,
+        encyclopedia: encyclopedia
+      }, { returning: "minimal" });
+    if (error) console.error("saveUserState", error);
+  }
+
+  /* Save users' last GUI state */
+  function saveTempState() {
+    const tiles = [...workspace.querySelectorAll(".tile")].map(tile => ({
+      id: tile.dataset.id,
+      x: parseFloat(tile.style.left) || 0,
+      y: parseFloat(tile.style.top) || 0
+    }));
+    const unlocked = Array.from(unlockedElements);
+    sessionStorage.setItem("mergedom_workspace", JSON.stringify(tiles));
+    sessionStorage.setItem("mergedom_unlocked", JSON.stringify(unlocked));
+    sessionStorage.setItem("mergedom_encyclopedia", JSON.stringify(encyclopediaCache));
+  }
+
+  /* Load users' last GUI state */
+  function loadTempStateToUI() {
+    const s1 = sessionStorage.getItem("mergedom_workspace");
+    const s2 = sessionStorage.getItem("mergedom_unlocked");
+    const s3 = sessionStorage.getItem("mergedom_encyclopedia");
+    if (s1) {
+      try {
+        const tiles = JSON.parse(s1);
+        workspace.querySelectorAll(".tile").forEach(t => t.remove());
+        tiles.forEach(item => createTile(String(item.id), item.x, item.y));
+      } catch (e) { console.warn("bad temp workspace", e); }
+    }
+    if (s2) {
+      try { unlockedElements = new Set(JSON.parse(s2).map(String)); } catch (e) {}
+    }
+    if (s3) {
+      try { encyclopediaCache = JSON.parse(s3); } catch (e) {}
+    }
+    renderSidebar();
+    updateProgress();
+  }
+
+  /* Save workspace */
+  function saveWorkspace() {
+    const data = [];
+    workspace.querySelectorAll(".tile").forEach(tile => {
+      data.push({
+        id: tile.dataset.id,
+        x: parseFloat(tile.style.left) || 0,
+        y: parseFloat(tile.style.top) || 0
+      });
     });
-}
+    if (currentUserId) {
+      saveUserState();
+    } else {
+      saveTempState();
+    }
+  }
 
-/* Create tile */
-function createTile(id, x, y) {
-  const tile = document.createElement("div");
-  tile.className = "tile";
-  tile.textContent = elementMap[String(id)]?.element_name ?? id;
-  tile.dataset.id = id;
-  tile.style.left = x + "px";
-  tile.style.top = y + "px";
-  tile.addEventListener("mousedown", (e) => {
+  /* Load workspace */
+  async function loadWorkspace() {
+    if (currentUserId) {
+      await loadUserState(currentUserId);
+      return;
+    }
+    const saved = sessionStorage.getItem("mergedom_workspace");
+    if (!saved) {
+        updateProgress();
+      return;
+    }
+    try {
+      const data = JSON.parse(saved);
+      data.forEach(item => createTile(item.id, item.x, item.y));
+      updateWorkspaceHint();
+       updateProgress();
+    } catch (e) { console.warn("Failed to parse temp workspace:", e); }
+  }
+
+  /* Update users' hints */
+  function updateWorkspaceHint() {
+    const hasTile = workspace.querySelectorAll(".tile").length > 0;
+    workspace.classList.toggle("has-tile", hasTile);
+  }
+
+  /* Creates user session */
+  supabase.auth.onAuthStateChange(async (event, session) => {
+    console.log("AUTH EVENT:", event, session);
+    currentUserId = session?.user?.id ?? null;
+    if (currentUserId) {
+      if (!await userStateExists(currentUserId)) {
+        const tempWorkspace = JSON.parse(sessionStorage.getItem("mergedom_workspace") || "null");
+        const tempUnlocked = JSON.parse(sessionStorage.getItem("mergedom_unlocked") || "null");
+        const tempEnc = JSON.parse(sessionStorage.getItem("mergedom_encyclopedia") || "null");
+        if (tempWorkspace || tempUnlocked || tempEnc) {
+          await supabase.from("user_state").upsert({
+            user_id: currentUserId,
+            workspace: tempWorkspace || [],
+            unlocked_elements: tempUnlocked || [],
+            encyclopedia: tempEnc || []
+          }, { returning: "minimal" });
+        }
+      }
+      await loadUserState(currentUserId);
+    } else {
+      loadTempStateToUI();
+    }
+  });
+
+  /* Load elements */
+  async function loadElements() {
+    const { data, error } = await supabase
+      .from("elements")
+      .select("id, element_name, category, description");
+    if (error) {
+      console.error(error);
+      return;
+    }
+    elements = data;
+    unlockedElements = new Set(elements.slice(0, 10).map(e => String(e.id)));
+    elementMap = {};
+    elements.forEach(e => { elementMap[String(e.id)] = e; });
+    renderSidebar();
+  }
+
+  /* Load recipes (combinations) */
+  async function loadRecipes() {
+    const { data, error } = await supabase
+      .from("combinations")
+      .select("element1_id, element2_id, result_id");
+    if (error) {
+      console.error(error);
+      return;
+    }
+    recipes = {};
+    data.forEach(r => {
+      recipes[`${r.element1_id}+${r.element2_id}`] = String(r.result_id);
+      recipes[`${r.element2_id}+${r.element1_id}`] = String(r.result_id);
+    });
+  }
+
+  /* Render sidebar */
+  function renderSidebar() {
+    sidebar.innerHTML = "";
+    const groups = {};
+    elements
+      .filter(el => unlockedElements.has(String(el.id)))
+      .forEach(el => {
+        const letter = el.element_name[0].toUpperCase();
+        if (!groups[letter]) {
+          groups[letter] = [];
+        }
+        groups[letter].push(el);
+      });
+    // Sort letters A–Z
+    Object.keys(groups)
+      .sort()
+      .forEach(letter => {
+        const header = document.createElement("div");
+        header.className = "sidebar-letter";
+        header.textContent = letter;
+        sidebar.appendChild(header);
+        groups[letter]
+          .sort((a, b) => a.element_name.localeCompare(b.element_name))
+          .forEach(el => {
+            const div = document.createElement("div");
+            div.className = "element";
+            div.textContent = el.element_name;
+            div.addEventListener("mousedown", (e) => {
+              const wr = workspace.getBoundingClientRect();
+              const x = e.clientX - wr.left;
+              const y = e.clientY - wr.top;
+              const tile = createTile(String(el.id), x, y);
+              activeTile = tile;
+              isDragging = true;
+              const rect = tile.getBoundingClientRect();
+              offsetX = e.clientX - rect.left;
+              offsetY = e.clientY - rect.top;
+              tile.style.cursor = "grabbing";
+            });
+            sidebar.appendChild(div);
+          });
+      });
+    updateProgress();
+  }
+
+  /* Create tile */
+  function createTile(id, x = 0, y = 0) {
+    const tile = document.createElement("div");
+    tile.className = "tile";
+    tile.textContent = elementMap[String(id)]?.element_name ?? id;
+    tile.dataset.id = String(id);
+    tile.style.left = (Number(x) || 0) + "px";
+    tile.style.top = (Number(y) || 0) + "px";
+    tile.addEventListener("mousedown", (e) => {
+      activeTile = tile;
+      isDragging = true;
+      const rect = tile.getBoundingClientRect();
+      offsetX = e.clientX - rect.left;
+      offsetY = e.clientY - rect.top;
+      tile.style.cursor = "grabbing";
+    });
+    workspace.appendChild(tile);
+    updateWorkspaceHint();
+    return tile;
+  }
+
+  /* Combine system */
+  function combine(id1, id2, targetTile) {
+    const resultId = recipes[`${id1}+${id2}`];
+    if (!resultId) {
+      return;
+    }
+    const rect = targetTile.getBoundingClientRect();
+    const wr = workspace.getBoundingClientRect();
+    const x = rect.left - wr.left;
+    const y = rect.top - wr.top;
+    playMergeAnimation(x + 40, y + 40);
+    if (activeTile && activeTile !== targetTile) activeTile.remove();
+    targetTile.remove();
+    createTile(resultId, x, y);
+    unlockedElements.add(String(resultId));
+    renderSidebar();
+    const newElement = elementMap[String(resultId)];
+    if (newElement) appendEncyclopedia(newElement);
+    saveWorkspace();
+    updateProgress();
+  }
+
+  /* Mouse move */
+  document.addEventListener("mousemove", (e) => {
+    if (!activeTile || !isDragging) return;
+    const wr = workspace.getBoundingClientRect();
+    const x = e.clientX - wr.left - offsetX;
+    const y = e.clientY - wr.top - offsetY;
+    activeTile.style.left = `${x}px`;
+    activeTile.style.top = `${y}px`;
+  });
+
+  /* Mouse up */
+  document.addEventListener("mouseup", (e) => {
+    if (!activeTile) return;
+    isDragging = false;
+    const tiles = workspace.querySelectorAll(".tile");
+    tiles.forEach(other => {
+      if (other === activeTile) return;
+      if (isColliding(activeTile, other)) {
+        combine(activeTile.dataset.id, other.dataset.id, other);
+      }
+    });
+    if (isTouchingBoundary(activeTile)) {
+      activeTile.remove();
+    } else {
+      saveWorkspace();
+    }
+    updateWorkspaceHint();
+
+    if (activeTile) activeTile.style.cursor = "grab";
+    activeTile = null;
+  });
+
+  /* Mouse down */
+  document.addEventListener("mousedown", (e) => {
+    if (e.button !== 0) return;
+    const tile = e.target.closest(".tile");
+    if (!tile) return;
     activeTile = tile;
+    isDragging = true;
     const rect = tile.getBoundingClientRect();
     offsetX = e.clientX - rect.left;
     offsetY = e.clientY - rect.top;
     tile.style.cursor = "grabbing";
   });
-  workspace.appendChild(tile);
-  return tile;
+
+/* Init */
+await loadElements();
+await loadRecipes();
+
+/* Load user-specific state if logged in, otherwise fall back to temporary UI state */
+const { data: { session } } = await supabase.auth.getSession();
+currentUserId = session?.user?.id ?? null;
+if (currentUserId) {
+  await loadUserState(currentUserId);
+} else {
+  loadTempStateToUI();
 }
 
-/* Combine system */
-function combine(id1, id2, targetTile) {
-  const resultId = recipes[`${id1}+${id2}`];
-  if (!resultId) {
-    resultDiv.textContent = "No combo";
-    return;
-  }
-  const rect = targetTile.getBoundingClientRect();
-  const wr = workspace.getBoundingClientRect();
-  const x = rect.left - wr.left;
-  const y = rect.top - wr.top;
-  if (activeTile && activeTile !== targetTile) {
-    activeTile.remove();
-  }
-  targetTile.remove();
-  createTile(resultId, x, y);
-  unlockedElements.add(resultId);
-  renderSidebar();
-  const newElement = elementMap[resultId];
-  if (newElement) {
-    appendEncyclopedia(newElement);
-  } else {
-        console.warn("Encyclopedia append failed: missing element", resultId);
-  }
-  resultDiv.textContent =
-    `${elementMap[id1]} + ${elementMap[id2]} = ${elementMap[resultId]}`;
-}
-
-/* Init load */
-window.addEventListener("load", async () => {
-  await loadElements();
-  await loadRecipes();
+loadWorkspace();
+updateProgress();
 });
-
 </script>
-
 </body>
 </html>
